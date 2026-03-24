@@ -8,7 +8,7 @@ load_dotenv()
 
 # LLMs
 llm = LLM(
-    model="bedrock/anthropic.claude-3-5-sonnet-20241022-v2:0",
+    model="bedrock/anthropic.claude-3-5-sonnet-20241022-v2:0", # Latest v2 architecture representing ultimate reasoning logic
     temperature=0.4,
     max_tokens=8192
 )
@@ -46,6 +46,7 @@ class BlogWriter():
             llm=llm
         )
     
+
     @agent
     def editor(self) -> Agent:
         return Agent(
@@ -78,16 +79,17 @@ class BlogWriter():
 
     @task
     def write(self) -> Task:
-        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         return Task(
-            config=self.tasks_config['write'],
-            output_file=os.path.join(BASE_DIR, 'output/blog_post.md')
+            config=self.tasks_config['write']
         )
+    
     
     @task
     def edit(self) -> Task:
+        BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         return Task(
-            config=self.tasks_config['edit']
+            config=self.tasks_config['edit'],
+            output_file=os.path.join(BASE_DIR, 'output/blog_post.md')
         )
     
     @task
@@ -106,5 +108,6 @@ class BlogWriter():
             tasks=[self.style(), self.plan(), self.write(), self.edit(), self.illustrate()],
             process=Process.sequential,
             verbose=True,
+            cache=False,
             max_rpm=2  # Added to strictly limit API calls and prevent AWS Bedrock throttling
         )

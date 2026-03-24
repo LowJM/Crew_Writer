@@ -8,10 +8,10 @@ mystyle:
 
 plan:
   description: >
-    Conduct a research about {topic}. 
-    Make sure you find interesting and relevant information from blogs.
-    Look for good tips and hacks that will help the audience to learn the topic.
-    You can also find some good examples of how to use {topic} in real life.
+    1. Read the provided topic: {topic}
+    2. Analyze the topic to extract the core message, target audience, and primary search intent.
+    3. Identify 3-5 key subtopics or "content clusters" that must be covered to comprehensively address the topic.
+    4. Outline the article structure (H1, H2s, H3s), ensuring a logical flow that builds the narrative.
     Use a combination of these sources to create a comprehensive content plan.
   expected_output: >
     1. A comprehensive content plan document with a detailed outline to pass to the Content Writer
@@ -55,6 +55,8 @@ illustrate:
     It should capture the visual essence of the blog post topic.
   agent: illustrator
   output_file: picture.txt
+
+
 
 
   
