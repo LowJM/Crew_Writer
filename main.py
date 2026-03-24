@@ -46,4 +46,4 @@ def write_blog_post(topic: str):
 
 
 if __name__ == "__main__":
-    write_blog_post("Top Rated Cafes in Malaysia")
+    write_blog_post("Malaysia Top Tourists Spots")

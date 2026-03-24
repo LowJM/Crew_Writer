@@ -42,7 +42,7 @@ edit:
   expected_output: >
     A well-written blog post in markdown format, ready for publication.
     The article must be within a 6 to 10 minutes read.
-    Generate a picture based on the content to illustrate the blog post.
+    CRITICAL INSTRUCTION: You MUST output the ENTIRE, complete edited article in a single response! Do NOT cut the article into multiple parts. Do NOT use "[Continued in next section]". Do NOT ask conversational questions like "Would you like me to continue?". Just output the full markdown document from start to finish.
   agent: editor
 
 

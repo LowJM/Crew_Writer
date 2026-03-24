@@ -104,8 +104,8 @@ class BlogWriter():
     def crew(self) -> Crew:
         """Creates the Blog Post crew"""
         return Crew(
-            agents=[self.writer_style(), self.planner(), self.content_writer(), self.editor(), self.illustrator()],
-            tasks=[self.style(), self.plan(), self.write(), self.edit(), self.illustrate()],
+            agents=[self.planner(), self.content_writer(), self.editor(), self.illustrator()],
+            tasks=[self.plan(), self.write(), self.edit(), self.illustrate()],
             process=Process.sequential,
             verbose=True,
             cache=False,
