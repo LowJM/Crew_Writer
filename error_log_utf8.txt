@@ -1,0 +1,448 @@
+﻿+-------------------------[CrewAIEventsBus] Sync handler error in on_crew_started: 'charmap' codec can't 
+encode character '\U0001f680' in position 1: character maps to <undefined>
++-------------------------[CrewAIEventsBus] Sync handler error in on_task_started: 'charmap' codec can't 
+encode character '\U0001f680' in position 1: character maps to <undefined>
++-------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_started: 'charmap' codec 
+can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
++---------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_execution: 'charmap' 
+codec can't encode character '\u2705' in position 1: character maps to 
+<undefined>
++-------------------------[CrewAIEventsBus] Sync handler error in on_task_completed: 'charmap' codec 
+can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
++---------------------------[CrewAIEventsBus] Sync handler error in on_task_started: 'charmap' codec can't 
+encode character '\u2705' in position 1: character maps to <undefined>
++---------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_started: 'charmap' codec 
+can't encode character '\u2705' in position 1: character maps to <undefined>
++-------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_execution: 'charmap' 
+codec can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
++---------------------------[CrewAIEventsBus] Sync handler error in on_task_completed: 'charmap' codec 
+can't encode character '\u2705' in position 1: character maps to <undefined>
++-------------------------[CrewAIEventsBus] Sync handler error in on_task_started: 'charmap' codec can't 
+encode character '\U0001f680' in position 1: character maps to <undefined>
+[96m
+[2026-03-19 15:51:37][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++-----------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_started: 'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
++-------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_execution: 'charmap' 
+codec can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
++-----------------------------[CrewAIEventsBus] Sync handler error in on_task_completed: 'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
++------------------------------[CrewAIEventsBus] Sync handler error in on_task_started: 'charmap' codec can't 
+encode character '\U0001f4cb' in position 1: character maps to <undefined>
++---------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_started: 'charmap' codec 
+can't encode character '\u2705' in position 1: character maps to <undefined>
++-----------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_execution: 'charmap' 
+codec can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
++----------------------------[CrewAIEventsBus] Sync handler error in on_task_completed: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
++---------------------------[CrewAIEventsBus] Sync handler error in on_task_started: 'charmap' codec can't 
+encode character '\u2705' in position 1: character maps to <undefined>
++----------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_started: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[96m
+[2026-03-19 15:53:31][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++-----------------------------[+-------------------------CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
++----------------------------[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[+------------------------------CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++---------------------------[CrewAIEventsBus+-----------------------------] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\u2705' in position 1: character maps to <undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[96m
+[2026-03-19 15:54:47][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++----------------------[CrewAIEventsBus]+- Sync handler error in on_tool_usage_started: ---------------------------'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++-------------------------[CrewAIEventsBus+-]-------------------------- Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\u2705' in position 1: character maps to <undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++----------------------+-[---------------------------CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[96m
+[2026-03-19 15:56:00][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++-----------------------------[+-CrewAIEventsBus---------------------------] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
++----------------------[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[CrewAIEventsBus+-] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character ---------------------------'\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++-----------------------------[CrewAIEventsBus]+- Sync handler error in on_tool_usage_started: ---------------------------'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[96m
+[2026-03-19 15:57:14][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++----------------------[+----------------------------CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++----------------------------[CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f527'+- in position ------------------------1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++----------------------------[CrewAIEventsBus+-]--------------------------- Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[96m
+[2026-03-19 15:58:30][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++------------------------------[CrewAIEventsBus+-] Sync handler error in on_tool_usage_started: ---------------------'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++-------------------------+-[---------------------CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++----------------------------[+-CrewAIEventsBus--------------------------] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\u2705' in position 1: character maps to <undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[96m
+[2026-03-19 15:59:45][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++-----------------------------[CrewAIEventsBus] Sync handler error in on_tool_usage_started: +-'charmap' codec 
+can't encode character ---------------------------'\U0001f916' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++----------------------[+------------------------------CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++---------------------------+----------------------------[CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\u2705' in position 1: character maps to <undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[96m
+[2026-03-19 16:00:58][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++----------------------------[+-CrewAIEventsBus]------------------------ Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f680' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++------------------------------[CrewAIEventsBus+-]---------------------------- Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++----------------------------+-[CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character ---------------------'\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[96m
+[2026-03-19 16:02:12][0m[93m[INFO]: [0m[1m[93mMax RPM reached, waiting for next minute to start.[0m
++----------------------------[+-CrewAIEventsBus---------------------] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++-----------------------------[CrewAIEventsBus+-]--------------------------- Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
++----------------------+-[---------------------------CrewAIEventsBus] Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
+[32mTool generate_image executed with result: Error executing tool: Tool 'Generate Image' arguments validation failed: 1 validation error for TitanImageToolSchema
+topic
+  Field required [type=missing, input_value={}, input_type=dict]
+    For furt...[0m
+[93mMaximum iterations reached. Requesting final answer.[0m
++---------------------------[CrewAIEventsBus+-]----------------------------- Sync handler error in on_tool_usage_started: 'charmap' codec 
+can't encode character '\u2705' in position 1: character maps to <undefined>
+[CrewAIEventsBus] Sync handler error in on_tool_usage_error: 'charmap' codec 
+can't encode character '\U0001f4cb' in position 1: character maps to 
+<undefined>
+.\venv\Scripts\python.exe : 
+ERROR:root:AWS Bedrock 
+ClientError 
+(ThrottlingException): Too 
+many requests, please wait 
+before trying again.
+At line:1 char:1
++ .\venv\Scripts\python.exe 
+main.py > error_log.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpeci    fied: 
+(ERROR:root    :AWS ...e 
+trying     again.:String) [] 
+   , RemoteException
+    + FullyQualifiedE    
+rrorId : NativeCo    
+mmandError
+ 
+ERROR:root:AWS Bedrock API 
+call failed: API throttled, 
+please retry later: Too many 
+requests, please wait before 
+trying again.
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: API throttled, please retry later: Too many requests, please wait before trying again.[0m
+[91mAn unknown error occurred. Please check the details below.[0m
+[91mError details: API throttled, please retry later: Too many requests, please wait before trying again.[0m
++-----------------------------[CrewAIEventsBus] Sync handler error in on_llm_call_failed: 'charmap' codec 
+can't encode character '\U0001f916' in position 1: character maps to 
+<undefined>
+[93mMaximum iterations reached. Requesting final answer.[0m
++----------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_started: 'charmap' codec 
+can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
++----------------------------[CrewAIEventsBus] Sync handler error in on_agent_logs_execution: 'charmap' 
+codec can't encode character '\U0001f527' in position 1: character maps to 
+<undefined>
++------------------------------[CrewAIEventsBus] Sync handler error in on_task_failed: 'charmap' codec can't 
+encode character '\U0001f4cb' in position 1: character maps to <undefined>
++-----------------------------[CrewAIEventsBus] Sync handler error in on_crew_failed: 'charmap' codec can't 
+encode character '\U0001f916' in position 1: character maps to <undefined>
+Traceback (most recent call 
+last):
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\mai
+n.py", line 26, in <module>
+    write_blog_post("2026's 
+Good news on Global warming 
+issue")
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\mai
+n.py", line 16, in 
+write_blog_post
+    .kickoff(inputs = {
+     ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\ven
+v\Lib\site-packages\crewai\cr
+ew.py", line 716, in kickoff
+    result = self._run_sequen
+tial_process()
+             ^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\ven
+v\Lib\site-packages\crewai\cr
+ew.py", line 1141, in 
+_run_sequential_process
+    return self._execute_task
+s(self.tasks)
+           ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\ven
+v\Lib\site-packages\crewai\cr
+ew.py", line 1233, in 
+_execute_tasks
+    task_output = 
+task.execute_sync(
+                  
+^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\ven
+v\Lib\site-packages\crewai\ta
+sk.py", line 503, in 
+execute_sync
+    return 
+self._execute_core(agent, 
+context, tools)
+           ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\ven
+v\Lib\site-packages\crewai\ta
+sk.py", line 783, in 
+_execute_core
+    raise e  # Re-raise the 
+exception after emitting the 
+event
+    ^^^^^^^
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\ven
+v\Lib\site-packages\crewai\ta
+sk.py", line 721, in 
+_execute_core
+    task_output = TaskOutput(
+                  ^^^^^^^^^^^
+  File "C:\Users\user\Downloa
+ds\CrewWriter\Crew_Writer\ven
+v\Lib\site-packages\pydantic\
+main.py", line 253, in 
+__init__
+    validated_self = self.__p
+ydantic_validator__.validate_
+python(data, 
+self_instance=self)
+                     ^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^
+pydantic_core._pydantic_core.
+ValidationError: 1 
+validation error for 
+TaskOutput
+raw
+  Input should be a valid 
+string [type=string_type, 
+input_value=[{'toolUseId': 
+'tooluse_d...'}, 'type': 
+'tool_use'}], 
+input_type=list]
+    For further information 
+visit https://errors.pydantic
+.dev/2.11/v/string_type

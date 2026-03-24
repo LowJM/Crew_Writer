@@ -1,79 +1,108 @@
-# CrewAI Blog Writer (AWS Bedrock Edition)
+# CrewAI Blog Writer
 
-Welcome to your AI-powered Blog Writer! This program uses the **CrewAI** framework to automate the creation of a full blog post and a custom illustration. It leverages **AWS Bedrock** (specifically Claude 3.5 Sonnet and Amazon Titan Image Generator) to act as a team of specialized AI agents working together to write, edit, and illustrate your article.
+> An automated content engine that uses Claude 3.5 Sonnet and Amazon Titan via AWS Bedrock to research, write, edit, and illustrate professional blog posts in a single pipeline.
 
----
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 🚀 How to Run the Program from Scratch
+## Why This Exists
 
-### 1. Prerequisites
-Ensure you have the following installed on your computer:
+Generating high-quality, fully illustrated blog content typically requires context switching between multiple AI chat interfaces, manual prompt wrangling, and separate image generation pipelines. The CrewAI Blog Writer eliminates this fragmentation. It orchestrates a specialized team of autonomous agents—planners, writers, editors, and illustrators—into a robust CI/CD-style content pipeline that runs locally but leverages AWS Bedrock's enterprise models. 
+
+## Quick Start
+
+```bash
+git clone https://github.com/yourusername/crewai-blog-writer.git
+cd crewai-blog-writer/Crew_Writer
+python -m venv venv
+```
+
+```bash
+# Windows
+.\venv\Scripts\activate
+# Mac/Linux
+source venv/bin/activate
+```
+
+```bash
+pip install crewai crewai-tools python-dotenv boto3
+echo 'AWS_PROFILE="default"' > .env
+python main.py
+```
+
+## Installation
+
+**Prerequisites**:
 - Python 3.12+
-- An AWS Account with On-Demand model access enabled for:
+- AWS Account with On-Demand model access enabled for:
   - `anthropic.claude-3-5-sonnet-20241022-v2:0`
   - `amazon.titan-image-generator-v2:0`
+- AWS CLI configured locally (`aws configure`) or environment variables for credentials.
 
-### 2. Setup your Environment
-First, open your terminal (Command Prompt or PowerShell) and navigate strictly into this project folder (`Crew_Writer`).
+### Configure your API Keys
 
-1. **Activate the Virtual Environment**
-   ```powershell
-   .\venv\Scripts\activate
-   ```
-2. **Install Dependencies** (if you haven't already):
-   ```powershell
-   pip install crewai crewai-tools python-dotenv boto3
-   ```
-
-### 3. Configure your API Keys
-In the root of this folder, there is a file called `.env`. Open it and fill in your customized AWS credentials. It should look exactly like this:
+Create a `.env` file in the root of the project directory and configure your AWS credentials. Boto3 automatically resolves these if you use standard profiles, but you can hardcode them here.
 
 ```env
-OPENAI_API_KEY="your_openai_api_key_here" # Not used by default, but required for CrewAI core
-SERPER_API_KEY="your_serper_api_key_here" # (Optional) used if you re-enable the Serper web search tool
+OPENAI_API_KEY="your_openai_api_key_here" # Required for CrewAI core processing
+SERPER_API_KEY="your_serper_api_key_here" # Optional Web search
 
 # AWS Bedrock Credentials
 AWS_ACCESS_KEY_ID="your_aws_access_key"
 AWS_SECRET_ACCESS_KEY="your_aws_secret_key"
-AWS_REGION_NAME="us-east-1" # MUST be us-east-1 to support the Titan Image Generator
+AWS_REGION_NAME="us-east-1" # MUST be us-east-1 to support Titan Image Gen
 ```
 
----
+## Usage
 
-## ✍️ How to Input Your Topic
+### Basic Example
 
-To change what the AI writes about, you simply edit the **`main.py`** file in your code editor.
+To generate a post, you modify the topic at the bottom of the `main.py` script.
 
-1. Open `main.py`.
-2. Scroll to the very bottom to line 26.
-3. You will see this line of code:
-   ```python
-   write_blog_post("2026's Good news on Global warming issue")
-   ```
-4. **Change the text inside the quotes** to whatever topic you want! (e.g., `"The History of Roman Architecture"` or `"Why Python is great for Data Science"`).
+1. Open `main.py` in your code editor.
+2. Locate the execution block at the bottom:
 
-**What can you input?**
-Absolutely anything! Because we generalized the AI's instructions, you can input historical events, coding tutorials, creative stories, or news summaries. The AI will automatically research and adapt its style to your request.
+```python
+if __name__ == "__main__":
+    write_blog_post("The best ngiu chap restaurants in Malaysia")
+```
 
----
+3. Change the text to your desired topic.
+4. Execute the script from your terminal:
 
-## ▶️ Running the Program
-
-Once your topic is set in `main.py`, run this exact command in your terminal (make sure your `(venv)` is activated):
-
-```powershell
+```bash
 python main.py
 ```
 
-*Note: The script is specifically configured with a strict speed limit (`max_rpm=2`) to prevent AWS from throttling your account for "Too Many Requests". Because of this, it will take roughly 5 to 10 minutes to finish writing. You will see progress logs printing in your console.*
+### Retrieving Output
 
----
+When the run completes (around 5 to 10 minutes), you find two files in the `output/` directory:
+- `output/blog_post.md`: The final written article formatted in Markdown.
+- `output/picture.jpg`: The custom illustration generated by Amazon Titan.
 
-## 📂 Where is the Output Placed?
+> **Warning:** Running the script a second time with a new topic overwrites existing files in the `output/` directory. Move or rename your files if you wish to keep them.
 
-Once the script completely finishes, it will automatically place two files into the **`output`** folder located inside this directory:
+## Configuration
 
-1. **`output/blog_post.md`**: This is your final written article formatted in Markdown. You can open this in any text editor, VS Code, or publish it directly to a blog.
-2. **`output/picture.jpg`**: This is the custom illustration drawn by the Amazon Titan AI to match your topic.
+You configure agent behaviors, instructions, and limits through YAML files and the `crew.py` configuration.
 
-**Important:** If you run the script a second time with a new topic, it will completely OVERWRITE `blog_post.md` and `picture.jpg`. If you want to keep your articles, make sure to rename them or move them somewhere else before running `python main.py` again!
+### Agent and Task Definitions
+
+- **`config/agents.yaml`**: Defines roles, memory characteristics, and capabilities for the planner, content writer, editor, and illustrator.
+- **`config/tasks.yaml`**: Defines step-by-step instructions and expected outputs for the pipeline.
+
+### Model Parameters
+
+You control the core LLM parameters in `crew.py`. To adjust throttling or creativity, modify these values at the top of the file:
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `model` | `string` | `bedrock/anthropic.claude-3...` | AWS Bedrock Model ID for text processing |
+| `temperature` | `float`| `0.4` | Creativity vs execution determinism |
+| `max_tokens` | `integer`| `8192` | Absolute max token output per completion |
+| `max_rpm` | `integer`| `2` | Speed limit to prevent AWS Bedrock throttling |
+
+## API Reference & Extensions
+
+The script uses a decoupled image generator `TitanImageTool` defined in `custom_tools.py` to prevent CrewAI abstraction issues from hiding AWS Bedrock errors. The tool intercepts the text output of the `illustrator` agent via `picture.txt`, checks bounds, and manually queries Bedrock. It limits visual prompts to the 512-character maximum allowed by Amazon Titan V2.
+
+See `custom_tools.py` for direct implementations of `boto3` Bedrock Runtime CLI invocations and error-handling overrides.

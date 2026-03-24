@@ -29,9 +29,9 @@ write:
     6. Use analogies to make the article more engaging and complex concepts easier to understand.
   expected_output: >
     A well-written blog post in markdown format, ready for publication.
-    The article must be within a 7 to 12 minutes read.
-    Each section must have at least 3 paragraphs.
-    In the Conclusion section, you will write a summary that is engaging and factually accurate.
+    The article must be within a 4 to 6 minutes read.
+    Each section must have at least 2 paragraphs.
+    In the Conclusion section, you will write a summary that is engaging and factually accurate. Do NOT cut the article into multiple parts; write it as completely as possible in a single output.
   agent: content_writer
   output_file: blog_post.md
 
@@ -50,8 +50,9 @@ illustrate:
   description: >
     Generate a picture about {topic}
   expected_output: >
-    1. Understand the content of the blog post
-    2. Generate a picture in JPG format to illustrate the blog post
+    A single, concise AI image generation prompt of no more than 512 characters.
+    It must be plain text with no quotes, labels, or surrounding explanation.
+    It should capture the visual essence of the blog post topic.
   agent: illustrator
   output_file: picture.txt
 

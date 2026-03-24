@@ -115,3 +115,10 @@ Because generating 20 complete, fact-checked articles involving internet search 
 1. **Throttle Your Execution:** Keep `max_rpm` enabled on your Crew.
 2. **Batch Pauses:** Consider adding `import time; time.sleep(60)` between your Python loop iterations to give AWS limits time to cool down.
 3. **Request a Quota Increase:** For a production pipeline running 20 articles concurrently, applying for an On-Demand quota limit increase in your AWS Console is highly recommended.
+
+---
+
+## Technical Debt Integration
+The following partially implemented features were completely cleaned out of the main execution python scripts to improve maintainability, but they should be fully implemented safely in a future update:
+- **PDFKnowledgeSource**: RAG document ingestion for the `writer_style` agent (pending finalization of local embeddings or a Bedrock equivalent).
+- **SerperDevTool**: Live Google Search capabilities for the `planner` and future `fact_checker` agents (pending a valid `SERPER_API_KEY` registered in the environment).
