@@ -8,4 +8,7 @@ dependencies = [
     "crewai>=0.108.0",
     "crewai-tools>=0.38.1",
     "openai>=1.70.0",
+    "boto3>=1.34.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
 ]

@@ -1,108 +1,226 @@
 # CrewAI Blog Writer
 
-> An automated content engine that uses Claude 3.5 Sonnet and Amazon Titan via AWS Bedrock to research, write, edit, and illustrate professional blog posts in a single pipeline.
+> An automated content engine using CrewAI to research, write, edit, and illustrate professional blog posts, featuring dual-provider image generation (NVIDIA NIM primary, AWS Bedrock fallback).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Why This Exists
 
-Generating high-quality, fully illustrated blog content typically requires context switching between multiple AI chat interfaces, manual prompt wrangling, and separate image generation pipelines. The CrewAI Blog Writer eliminates this fragmentation. It orchestrates a specialized team of autonomous agents—planners, writers, editors, and illustrators—into a robust CI/CD-style content pipeline that runs locally but leverages AWS Bedrock's enterprise models. 
+Generating high-quality, fully illustrated blog content typically requires context switching between multiple AI chat interfaces, manual prompt wrangling, and separate image generation pipelines. The CrewAI Blog Writer eliminates this fragmentation. It orchestrates a specialized team of autonomous agents—planners, writers, editors, and illustrators—into a robust content pipeline. To ensure maximum reliability for the final illustration, the system features a decoupled image generation step using NVIDIA's NIM API as the primary engine, with AWS Bedrock's Titan image generator acting as a resilient fallback.
 
 ## Quick Start
 
+> **Important**: This project requires a **stable Python release** (e.g., Python 3.12 or 3.13). Do **not** use pre-release versions like Python 3.14, as core dependencies (`regex`, `tiktoken`) lack pre-built wheels and will fail to compile during installation.
+
+### Option 1: Using `uv` (Recommended)
+This project includes a `pyproject.toml` and `uv.lock`. Using [uv](https://github.com/astral-sh/uv) is the fastest and most reliable way to run the pipeline, as it automatically manages the Python version and dependencies.
+
 ```bash
+# Clone and enter the directory
 git clone https://github.com/yourusername/crewai-blog-writer.git
 cd crewai-blog-writer/Crew_Writer
-python -m venv venv
+
+# Sync dependencies and run (uv handles the virtual environment automatically)
+uv sync
+uv run main.py
 ```
 
+### Option 2: Using standard `pip`
+
 ```bash
-# Windows
+# Clone and enter the directory
+git clone https://github.com/yourusername/crewai-blog-writer.git
+cd crewai-blog-writer/Crew_Writer
+
+# Create a virtual environment using a STABLE Python version
+# (Replace python3.12 with your stable python executable)
+python3.12 -m venv venv
+
+# Activate virtual environment
+# Windows:
 .\venv\Scripts\activate
-# Mac/Linux
+# Mac/Linux:
 source venv/bin/activate
-```
 
-```bash
-pip install crewai crewai-tools python-dotenv boto3
-echo 'AWS_PROFILE="default"' > .env
+# Install dependencies
+pip install crewai crewai-tools python-dotenv boto3 requests
+
+# Run the pipeline
 python main.py
 ```
 
 ## Installation
 
-**Prerequisites**:
-- Python 3.12+
-- AWS Account with On-Demand model access enabled for:
-  - `anthropic.claude-3-5-sonnet-20241022-v2:0`
-  - `amazon.titan-image-generator-v2:0`
-- AWS CLI configured locally (`aws configure`) or environment variables for credentials.
+**Prerequisites**: 
+- **Stable Python** (3.12 or 3.13 recommended)
+- Node.js 18+ (if utilizing js tools)
 
-### Configure your API Keys
+### Configuration and Credentials
 
-Create a `.env` file in the root of the project directory and configure your AWS credentials. Boto3 automatically resolves these if you use standard profiles, but you can hardcode them here.
+The system requires API keys for text generation, search, and dual-provider image generation. Create a `.env` file in the root of your `Crew_Writer` directory and securely provide your credentials:
 
 ```env
-OPENAI_API_KEY="your_openai_api_key_here" # Required for CrewAI core processing
-SERPER_API_KEY="your_serper_api_key_here" # Optional Web search
+# Core CrewAI text processing
+OPENAI_API_KEY="your_openai_api_key_here" 
 
-# AWS Bedrock Credentials
+# Primary Image Generation (NVIDIA NIM)
+NVIDIA_NIM_API_KEY="your_nvidia_api_key_here"
+
+# Fallback Image Generation (AWS Bedrock Titan)
 AWS_ACCESS_KEY_ID="your_aws_access_key"
 AWS_SECRET_ACCESS_KEY="your_aws_secret_key"
-AWS_REGION_NAME="us-east-1" # MUST be us-east-1 to support Titan Image Gen
+AWS_REGION_NAME="ap-southeast-2" # Default region, change if your model is deployed elsewhere
 ```
+
+> **Warning:** Never commit your actual `.env` file or API credentials to public version control. Ensure `.env` is listed in your `.gitignore`.
 
 ## Usage
 
-### Basic Example
+The script supports two modes: **Single-Topic Mode** (for active testing/development) and **Batch Mode** (for processing multiple topics sequentially).
 
-To generate a post, you modify the topic at the bottom of the `main.py` script.
+### Single-Topic Mode (Active by default)
 
 1. Open `main.py` in your code editor.
-2. Locate the execution block at the bottom:
+2. Scroll to the execution block at the very bottom:
 
 ```python
 if __name__ == "__main__":
-    write_blog_post("The best ngiu chap restaurants in Malaysia")
+    # ---------------------------------------------------------
+    # TESTING MODE: Generate a single topic
+    # ---------------------------------------------------------
+    write_blog_post("Malaysia Top Tourists Spots")
 ```
 
-3. Change the text to your desired topic.
-4. Execute the script from your terminal:
+3. Change the string to your desired topic.
+4. Execute the script:
 
 ```bash
+# If using uv (Recommended):
+uv run main.py
+
+# If using standard pip (ensure your virtual environment is activated first!):
 python main.py
 ```
 
+### Batch Mode
+
+To process multiple topics automatically (with built-in API rate-limit delays):
+
+1. Open `main.py` and scroll to the bottom.
+2. Comment out `write_blog_post("...")`.
+3. Uncomment the `topics` array and the `run_batch_pipeline(topics)` call:
+
+```python
+    # ---------------------------------------------------------
+    # BATCH MODE (Future Proofing): Generate multiple topics
+    # ---------------------------------------------------------
+    topics = [
+        "The Best Nasi Lemak in Kuala Lumpur", 
+        "Exploring the Batu Caves"
+    ]
+    run_batch_pipeline(topics)
+```
+4. Run the script using `uv run main.py` or `python main.py`.
+
+### Pipeline Workflow
+
+1. **Text Pipeline**: CrewAI orchestrates the `planner` and `content_writer` to draft the post.
+2. **Internal Fact Checking**: A dedicated `fact_checker` agent cross-references the draft against its internal LLM knowledge base to prevent hallucinations.
+3. **Editing & Illustration**: The `editor` polishes the verified text, and the `illustrator` generates an optimized image prompt.
+4. **Decoupled Image Generation**:
+   - The system attempts to generate the image using the **NVIDIA NIM API**.
+   - If the NVIDIA API fails, it can automatically fall back to **AWS Bedrock Titan** (uncomment the fallback block in `main.py`).
+
 ### Retrieving Output
 
-When the run completes (around 5 to 10 minutes), you find two files in the `output/` directory:
-- `output/blog_post.md`: The final written article formatted in Markdown.
-- `output/picture.jpg`: The custom illustration generated by Amazon Titan.
+When the run completes, check the `output/` directory (created automatically if it doesn't exist). To prevent overwriting data, outputs are dynamically saved using safe filenames based on the topic (e.g., `malaysia_top_tourists_spots.md`).
 
-> **Warning:** Running the script a second time with a new topic overwrites existing files in the `output/` directory. Move or rename your files if you wish to keep them.
+- `output/[safe_filename].md`: The final written and fact-checked article.
+- `output/[safe_filename].jpg`: The generated featured illustration.
+- `output/[safe_filename].txt`: The isolated prompt used for image generation.
 
-## Configuration
+## Advanced Usage
 
-You configure agent behaviors, instructions, and limits through YAML files and the `crew.py` configuration.
+### Customizing Agents
 
-### Agent and Task Definitions
+You can fine-tune agent behaviors, instructions, and target styles by editing the YAML configuration files:
 
-- **`config/agents.yaml`**: Defines roles, memory characteristics, and capabilities for the planner, content writer, editor, and illustrator.
-- **`config/tasks.yaml`**: Defines step-by-step instructions and expected outputs for the pipeline.
+- **`config/agents.yaml`**: Adjust the roles, backstories, and goals of each agent. For example, the `illustrator` uses a structured prompt layer approach to ensure realistic photography and adheres strictly to a < 512 character limit.
+- **`config/tasks.yaml`**: Define the specific step-by-step instructions and expected outputs.
 
-### Model Parameters
+### Image Provider Overrides
 
-You control the core LLM parameters in `crew.py`. To adjust throttling or creativity, modify these values at the top of the file:
+In `crew.py` and `main.py`, you can manually switch the active providers by commenting/uncommenting the respective code blocks.
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `model` | `string` | `bedrock/anthropic.claude-3...` | AWS Bedrock Model ID for text processing |
-| `temperature` | `float`| `0.4` | Creativity vs execution determinism |
-| `max_tokens` | `integer`| `8192` | Absolute max token output per completion |
-| `max_rpm` | `integer`| `2` | Speed limit to prevent AWS Bedrock throttling |
+### Text Generator (LLM) Overrides
 
-## API Reference & Extensions
+By default, the pipeline uses NVIDIA NIM (`llama-3.1-70b-instruct`) in `crew.py`. To fallback to AWS Bedrock (`claude-3-5-sonnet`), comment out the NVIDIA block and uncomment the AWS block:
 
-The script uses a decoupled image generator `TitanImageTool` defined in `custom_tools.py` to prevent CrewAI abstraction issues from hiding AWS Bedrock errors. The tool intercepts the text output of the `illustrator` agent via `picture.txt`, checks bounds, and manually queries Bedrock. It limits visual prompts to the 512-character maximum allowed by Amazon Titan V2.
+```python
+# --- AWS Bedrock Fallback (Claude 3.5 Sonnet) ---
+llm = LLM(
+    model="bedrock/anthropic.claude-3-5-sonnet-20241022-v2:0",
+    temperature=0.4,
+    max_tokens=8192
+)
 
-See `custom_tools.py` for direct implementations of `boto3` Bedrock Runtime CLI invocations and error-handling overrides.
+# --- NVIDIA NIM Primary LLM (Llama 3.1 70B) ---
+# llm = LLM(
+#     model="openai/meta/llama-3.1-70b-instruct",
+#     base_url="https://integrate.api.nvidia.com/v1",
+#     api_key=os.environ.get("NVIDIA_NIM_API_KEY"),
+#     temperature=0.4
+# )
+```
+
+### Image Provider Overrides
+
+In `main.py`, you can manually switch the active image generator. 
+
+**To use NVIDIA NIM (Default):**
+Leave the NVIDIA block uncommented and comment out the AWS Bedrock Titan block.
+```python
+# --- Primary: NVIDIA NIM Image Generation ---
+image_generator = NvidiaImageTool()
+image_result = image_generator.generate(image_prompt)
+print(image_result)
+
+# --- Fallback: AWS Bedrock Titan ---
+# image_generator = TitanImageTool()
+# image_result = image_generator.generate(image_prompt)
+# print(image_result)
+```
+
+**To use AWS Bedrock Titan (Fallback):**
+Comment out the NVIDIA block and uncomment the AWS Bedrock Titan block.
+```python
+# --- Primary: NVIDIA NIM Image Generation ---
+# image_generator = NvidiaImageTool()
+# image_result = image_generator.generate(image_prompt)
+# print(image_result)
+
+# --- Fallback: AWS Bedrock Titan ---
+image_generator = TitanImageTool()
+image_result = image_generator.generate(image_prompt)
+print(image_result)
+```
+
+## API Reference
+
+The project defines decoupled image generation tools in `custom_tools.py` to prevent CrewAI abstraction issues from hiding errors:
+
+- `NvidiaImageTool.generate(prompt: str)`: Sends a request to the NVIDIA NIM API to generate an image from the provided text prompt.
+- `TitanImageTool.generate(prompt: str)`: Utilizes the `boto3` Bedrock Runtime client to invoke the Amazon Titan image generator, strictly adhering to its 512-character prompt limit.
+
+## Troubleshooting
+
+### `ModuleNotFoundError: No module named 'crewai'`
+If you encounter this error when running `python main.py`, it means the script is executing using your global system Python rather than the isolated virtual environment where the packages were installed.
+
+**Solution**:
+- If you used `uv`: Always run the script using `uv run main.py`. This tells `uv` to automatically find and use the correct virtual environment.
+- If you used `pip`: Ensure you have activated your virtual environment (e.g., `.\venv\Scripts\activate`) before running `python main.py`. Your terminal prompt should show `(venv)` at the beginning of the line.
+
+## License
+
+MIT © [Your Name](https://github.com/yourname)

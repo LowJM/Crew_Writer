@@ -56,7 +56,11 @@ illustrate:
   agent: illustrator
   output_file: picture.txt
 
-
-
-
-  
+fact_check:
+  description: >
+    1. Read the provided draft from the Content Writer.
+    2. Review the text meticulously, cross-referencing all names, dates, companies, statistics, and bold claims against your internal knowledge base.
+    3. If any hallucinations or falsehoods are detected, rewrite that specific section to reflect accurate information.
+  expected_output: >
+    A verified, accurate markdown draft ready for final editing.
+  agent: fact_checker
